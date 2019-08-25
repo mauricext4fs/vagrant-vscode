@@ -1,6 +1,10 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "vagrant-dev-env"
   config.vm.network :private_network, ip: "192.168.159.11"
+  config.vm.provider :virtualbox do |vb|
+        vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+        vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+  end
   config.vm.provision "file", source: "~/.ssh/id_rsa", destination: "~/.ssh/id_rsa"
   config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/id_rsa.pub"
   config.vm.provision "file", source: "./bin/provision_vagrant.sh", destination: "/home/vagrant/add_sshkey.sh"
