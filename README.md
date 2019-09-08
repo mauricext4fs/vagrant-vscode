@@ -1,3 +1,4 @@
+# Vagrant-VSCode Development Environment
 
 The easiest way to get a whole development environment localy 
 (especially important when working on unreliable internet or none at all) 
@@ -18,7 +19,9 @@ Follow the usual instruction from https://www.virtualbox.org/wiki/Downloads
 ## Setup Vagrant on your Mac
 
 1. Download and install vagrant from: https://www.vagrantup.com/downloads.html
-2. Place package.box (Virtualbox vagrant machine) into this directory. 
+2. Place your package.box (Virtualbox vagrant machine) into this directory 
+   (see https://www.vagrantup.com/docs/cli/package.html on how to export a vm 
+   to a vagrant box). 
 3. Import the virtualbox:
 ```sh
 vagrant box add package.box --name vagrant-dev-env
