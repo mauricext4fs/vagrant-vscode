@@ -69,4 +69,27 @@ enter.
 
 Enjoy!
 
+## Update package.box
+
+When exporting your current running VM to use as a new package.box (vagrant-dev-env) 
+you must think about removing your ssh key from inside the running VM first or else 
+you will be giving your own private key to everybody else. 
+
+To remove your current SSH key run the following inside the vagrant machine (vagrant ssh) 
+
+```sh
+vagrant ssh
+rm ~/.ssh/*
+```
+
+Then outside of the vm in this current directory you can run the following command.
+This will first erase any existing package.box and export the current version running.
+
+```sh
+rm package.box
+vagrant package --output package.box
+```
+
+
+ 
 
