@@ -41,7 +41,7 @@ vagrant up
 
 ## Setup VS Code
 
-Please follow the steps in ## Setup Vagrant on your Mac first!.
+Please follow the steps in ## Setup Vagrant first!.
 
 ### Download and install Visual Studio Code Insiders
 
@@ -72,7 +72,7 @@ Make sure to not destory the existing entry and leave one blank line before and 
 In VSCode Insiders click F1 (Fn + F1 on Mac), search `ssh` and select option `SSH-Remote: Connect to Host...`. Then select `vagrant-dev-env` and click
 enter.
 
-1. Accept the SSH Key by choosing "Continue".
+1. Accept the SSH Host Fingerprint by choosing "Continue".
 2. VSCode should then open the remote workspace in new window.
 3. On the left menu click on Explorers
 4. Click on "Open Folder"
