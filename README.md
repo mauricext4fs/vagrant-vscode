@@ -1,8 +1,9 @@
 # Vagrant-VSCode Development Environment
 
 The easiest way to get a whole development environment localy 
-(especially important when working on unreliable internet or none at all) 
-is to use Vagrant and Virtualbox. 
+especially important when working on unreliable internet or 
+none... when you are flying for example is to use Vagrant and 
+Virtualbox with it's own vritual network adapter.
 
 During the box setup, your .ssh directory from your home dir will be copied
 over on the vagrant user inside the virtual machine. Therefore, all the 
@@ -12,21 +13,31 @@ will use your local ssh key.
 When installed the vagrant machine should be reachable with the IP:
 192.168.159.11 and the user: vagrant
 
-## Setup Virtualbox on your Mac
+## Setup Virtualbox
 
 Follow the usual instruction from https://www.virtualbox.org/wiki/Downloads
 
-## Setup Vagrant on your Mac
+## Setup Vagrant
 
 1. Download and install vagrant from: https://www.vagrantup.com/downloads.html
 2. Place your package.box (Virtualbox vagrant machine) into this directory 
    (see https://www.vagrantup.com/docs/cli/package.html on how to export a vm 
    to a vagrant box). 
-3. Import the virtualbox:
+3. Import an existing vagrant box by opening a terminal and running the 
+   following command:
 ```sh
 vagrant box add package.box --name vagrant-dev-env
 ```
-4. Run the vagrant machine (YOU MUST DO THIS AT EVERY REBOOT!) : vagrant up
+
+   If you don't have a vagrant box yet... you can take any Virtualbox VM and 
+   export it. See #Update package.box for the instruction on how to update and 
+   create the package.box file which can be shared to all developers to kick 
+   start and void any setup requirements other than this instruction.
+
+4. Run the vagrant machine (YOU MUST DO THIS AT EVERY REBOOT!) : 
+```sh
+vagrant up
+```
 
 ## Setup VS Code
 
