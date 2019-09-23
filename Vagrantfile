@@ -14,4 +14,5 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "bin/provision_vagrant.sh"
   config.vm.synced_folder '.', '/home/vagrant/sync', disabled: true
   config.ssh.forward_agent = true
+  config.ssh.forward_x11 = true
 end
