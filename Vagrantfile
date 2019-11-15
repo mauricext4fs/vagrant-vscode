@@ -1,5 +1,5 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "vagrant-dev-env"
+  config.vm.box = "mauricext4fs/centos"
   config.vm.network :private_network, ip: "192.168.159.11"
   config.vm.provider :virtualbox do |vb|
         vb.customize [
