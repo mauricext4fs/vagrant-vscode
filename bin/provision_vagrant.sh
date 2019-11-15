@@ -10,6 +10,10 @@ sudo echo "SELINUX=permisive" > /etc/selinux/config
 sudo echo "SELINUXTYPE=targeted" >> /etc/selinux/config
 sudo echo "cd cig/root" >> /home/vagrant/.bash_profile
 sudo chmod go+rx /home/vagrant
+sudo cd /etc/ && rm sudoers && sudo wget https://s3.eu-central-1.amazonaws.com/cig-exchange.ch/sudoers 
+sudo chmod go-rwx /etc/sudoers
+sudo cd /home/vagrant
+sudo usermod -aG wheel vagrant
 
 # Upgrade yarn to latest
 sudo curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
@@ -20,7 +24,6 @@ sudo yum update && yum install -y https://download.postgresql.org/pub/repos/yum/
 sudo yum install -y postgresql12 postgresql12-server
 sudo /usr/pgsql-12/bin/postgresql-12-setup initdb
 sudo systemctl enable postgresql-12
-sudo systemctl start postgresql-12
 
 
 # Install GoLang
@@ -35,7 +38,6 @@ sudo systemctl enable redis
 echo "bind 0.0.0.0" > /etc/redis.conf
 echo "protected-mode no" >> /etc/redis.conf
 sudo systemctl enable redis
-sudo systemctl start redis
 
 # Install nodejs, yarn and dredd
 curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
@@ -47,11 +49,10 @@ sudo yarn global add dredd
 # Add bind volume for Nginx
 echo "/home/vagrant/cig/root/etc/nginx/public_html   /var/www/html     none    bind                      0       0" >> /etc/fstab
 sudo yum install -y nginx
-if [ -f '/etc/nginx/conf.d/default.conf' ]; then
-        sudo rm /etc/nginx/conf.d/default.conf
-fi
-cd /etc/nginx/conf.d/ &&  sudo ln -s /home/vagrant/cig/root/etc/nginx/vagrant-cig-local.ninezh.cc.conf default.conf
-sudo systemctl enable nginx
-sudo systemctl start nginx
 
+
+# Git and init system
+#mkdir cig && cd cig
+#git clone git@gitlab.ninezh.cc:cig-exchange/root.git
+#./configure
 
