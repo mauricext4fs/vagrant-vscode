@@ -15,6 +15,7 @@ echo "nameserver 192.168.50.4" > /etc/resolv.conf
 wget https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.13.4.linux-amd64.tar.gz
 rm go1.13.4.linux-amd64.tar.gz
+echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile
 
 # Install Redis
 sudo yum install redis -y
@@ -34,7 +35,7 @@ sudo yarn global add dredd
 # Add bind volume for Nginx
 echo "/home/vagrant/cig/root/etc/nginx/public_html   /var/www/html     none    bind                      0       0" >> /etc/fstab
 sudo yum install -y nginx
-cd /etc/nginx/conf.d/ && sudo rm default.conf && sudo ln -s /home/vagrant/cig/root/etc/nginx/vagrant-cig-local.ninezh.cc.conf default.conf
+cd /etc/nginx/conf.d/ &&  sudo ln -s /home/vagrant/cig/root/etc/nginx/vagrant-cig-local.ninezh.cc.conf default.conf
 sudo systemctl enable nginx
 sudo systemctl start nginx
 
