@@ -5,7 +5,8 @@ Vagrant.configure("2") do |config|
         vb.customize [
 		"modifyvm", :id, "--natdnshostresolver1", "on",
         	"--natdnsproxy1", "on",
-		"--memory", "3072"
+		    "--memory", "3072",
+            "--cpus", "2"
 	]
   end
   config.vm.provision "file", source: "~/.ssh/id_rsa", destination: "~/.ssh/id_rsa"
