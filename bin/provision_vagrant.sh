@@ -11,6 +11,7 @@ sudo echo "SELINUXTYPE=targeted" >> /etc/selinux/config
 sudo echo "cd cig/root" >> /home/vagrant/.bash_profile
 sudo chmod go+rx /home/vagrant
 sudo cd /etc/ && rm sudoers && sudo wget https://s3.eu-central-1.amazonaws.com/cig-exchange.ch/sudoers 
+sudo setenforce 0
 sudo chmod go-rwx /etc/sudoers
 sudo cd /home/vagrant
 sudo usermod -aG wheel vagrant
@@ -20,7 +21,7 @@ sudo curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 
 
 # Install PostgreSQL
-sudo yum update && yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+sudo yum update && sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 sudo yum install -y postgresql12 postgresql12-server
 sudo /usr/pgsql-12/bin/postgresql-12-setup initdb
 sudo systemctl enable postgresql-12
